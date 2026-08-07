@@ -1,0 +1,36 @@
+# ── LLM (Gemini / Groq / OpenAI) ──────────────────────────────
+google-generativeai>=0.7.0
+langchain-google-genai>=1.0.0
+langchain-groq>=0.1.0
+langchain-openai>=0.1.0
+langchain>=0.2.0
+langgraph>=0.1.0
+
+# Google Sheets (OAuth Desktop Flow & Sheets API v4)
+gspread>=6.0.0
+google-auth>=2.29.0
+google-auth-oauthlib>=1.2.0
+google-api-python-client>=2.0.0
+
+# ── Excel Automation (pywin32 — Windows only) ──────────────────
+pywin32>=306 ; sys_platform == 'win32'
+
+# ── CSV Data Generation ────────────────────────────────────────
+faker>=25.0.0
+
+# ── Excel Read for Verification ───────────────────────────────
+openpyxl>=3.1.0
+
+# ── Retry Logic ───────────────────────────────────────────────
+tenacity>=8.3.0
+
+# ── Configuration ─────────────────────────────────────────────
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+python-dotenv>=1.0.0
+
+# ── Logging ───────────────────────────────────────────────────
+structlog>=24.1.0
+
+# ── Terminal UI ───────────────────────────────────────────────
+rich>=13.7.0

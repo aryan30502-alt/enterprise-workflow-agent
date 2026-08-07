@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  agent:
+    build: .
+    image: autonomous-agent
+    container_name: autonomous-agent
+    environment:
+      # If you prefer not to mount .env, you can pass env vars directly:
+      # - GROQ_API_KEY=gsk_...
+      # - GOOGLE_SHEET_ID=1abc...
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./credentials:/app/credentials
+      - ./output:/app/output
+    # The default command is defined in the Dockerfile as 'python main.py'
+    # To run a custom prompt, override it here:
+    # command: python main.py "Generate 30 employee records, import to Excel, upload to Sheets, verify."

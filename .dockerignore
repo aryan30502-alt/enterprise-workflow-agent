@@ -1,0 +1,17 @@
+# Environment and Credentials (should be mounted at runtime)
+.env
+credentials/
+
+# Outputs
+output/
+scratch/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
