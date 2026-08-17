@@ -31,7 +31,7 @@ class AppConfig(BaseSettings):
         description="Groq API key (gsk_...). When set, used as primary LLM backend.",
     )
     groq_model: str = Field(
-        "llama-3.1-8b-instant",
+        "openai/gpt-oss-120b",
         description="Groq model — fast inference and reliable function calling.",
     )
 
