@@ -133,11 +133,16 @@ def _run_oauth_flow(creds_path: pathlib.Path) -> Credentials:
                 "and return to the terminal."
             ),
         )
-    except OSError as exc:
-        raise RuntimeError(
-            f"Could not start OAuth callback server on port {_OAUTH_PORT}: {exc}\n"
-            f"Ensure port {_OAUTH_PORT} is not in use and try again."
-        ) from exc
+    except OSError:
+        # Fallback to any free port if 8080 is busy
+        creds = flow.run_local_server(
+            port=0,
+            open_browser=True,
+            success_message=(
+                "Authentication successful! You may close this browser tab "
+                "and return to the terminal."
+            ),
+        )
 
     logger.info("oauth_flow_complete")
     return creds

@@ -17,8 +17,8 @@ class AppConfig(BaseSettings):
 
     # ── Gemini LLM (Google AI Studio) ────────────────────────────────────────
     google_api_key: str = Field(
-        ...,
-        description="Google Gemini API key (from Google AI Studio or GCP).",
+        "",
+        description="Google Gemini API key (from Google AI Studio or GCP). Optional if GROQ_API_KEY is set.",
     )
     gemini_model: str = Field(
         "gemini-2.0-flash",
@@ -31,8 +31,8 @@ class AppConfig(BaseSettings):
         description="Groq API key (gsk_...). When set, used as primary LLM backend.",
     )
     groq_model: str = Field(
-        "llama-3.3-70b-versatile",
-        description="Groq model — llama-3.3-70b-versatile has excellent function calling.",
+        "llama-3.1-8b-instant",
+        description="Groq model — fast inference and reliable function calling.",
     )
 
     # ── OpenRouter (secondary fallback) ───────────────────────────────────────
@@ -62,8 +62,8 @@ class AppConfig(BaseSettings):
         ),
     )
     google_sheet_id: str = Field(
-        ...,
-        description="Target Google Spreadsheet ID (from the sheet URL).",
+        "",
+        description="Target Google Spreadsheet ID. Optional — if empty or inaccessible, the agent auto-creates a new sheet.",
     )
 
     # ── Agent Behaviour ───────────────────────────────────────────────────────

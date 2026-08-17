@@ -130,20 +130,20 @@ def _check_prerequisites() -> None:
 
     errors = []
 
-    if not config.google_api_key or config.google_api_key == "your_google_api_key_here":
+    has_llm_key = bool(
+        config.groq_api_key
+        or config.google_api_key
+        or config.openrouter_api_key
+    )
+    if not has_llm_key:
         errors.append(
-            "GOOGLE_API_KEY is not set. "
-            "Get a key at https://aistudio.google.com/app/apikey and set it in .env"
-        )
-
-    if not config.google_sheet_id or config.google_sheet_id == "your_spreadsheet_id_here":
-        errors.append(
-            "GOOGLE_SHEET_ID is not set. "
-            "Create a Google Spreadsheet, copy its ID from the URL, and set in .env"
+            "No LLM API key configured. Set GROQ_API_KEY (recommended), "
+            "GOOGLE_API_KEY, or OPENROUTER_API_KEY in .env"
         )
 
     creds_path = pathlib.Path(config.google_credentials_path)
-    if not creds_path.exists():
+    token_path = pathlib.Path(config.google_token_path)
+    if not creds_path.exists() and not token_path.exists():
         errors.append(
             f"OAuth credentials file not found at: {creds_path}. "
             "Download OAuth Desktop credentials from GCP Console and place the JSON there."

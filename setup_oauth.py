@@ -64,7 +64,7 @@ flow = InstalledAppFlow.from_client_secrets_file(str(CREDS), SCOPES)
 
 try:
     creds = flow.run_local_server(
-        port=8080,
+        port=0,
         open_browser=True,
         success_message=(
             "Authentication complete! You may close this tab and return to the terminal."
